@@ -11,6 +11,7 @@ seaborn = "*"
 matplotlib = "*"
 scikit-learn = "*"
 statsmodels = "*"
+nbconvert = "*"
 
 [dev-packages]
 ipykernel = "*"
