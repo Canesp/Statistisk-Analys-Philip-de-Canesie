@@ -14982,14 +14982,18 @@ class="
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
 
+<span class="c1"># skapar modelerna för usa och eu.</span>
 <span class="n">usa_model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;mpg ~ horsepower&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_cars</span><span class="p">[</span><span class="n">df_cars</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;usa&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">eu_model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;mpg ~ horsepower&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_cars</span><span class="p">[</span><span class="n">df_cars</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;europe&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
+<span class="c1"># gör en dataframe för det värde som man vill predict.</span>
 <span class="n">pre</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">80</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;horsepower&quot;</span><span class="p">])</span>
 
+<span class="c1"># kör predict på modelen med det värde man vill förutspå.</span>
 <span class="n">usa_ypred</span> <span class="o">=</span> <span class="n">usa_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span>
 <span class="n">eu_ypred</span> <span class="o">=</span> <span class="n">eu_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span>
 
+<span class="c1"># skriver ut svaret.</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;USA: </span><span class="si">{</span><span class="n">usa_ypred</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;EU: </span><span class="si">{</span><span class="n">eu_ypred</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
